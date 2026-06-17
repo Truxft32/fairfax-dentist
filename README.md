@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fairfax Dental Atelier
 
-## Getting Started
+Premium marketing website for a dental clinic on `fairfax.dentist`, optimized for the primary SEO query **Dentist in Fairfax, VA**.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Framer Motion
+- ESLint with Next.js Core Web Vitals rules
+
+## Project Structure
+
+```text
+app/
+  layout.tsx        Global metadata, Open Graph, Twitter Cards, root shell
+  page.tsx          Homepage composition and section order
+  globals.css       Tailwind import, global tokens, reveal animations
+components/
+  AnimatedReveal.tsx    Scroll reveal animation with IntersectionObserver fallback
+  HeroBackground.tsx    Autoplay hero video and dental image fallback
+  HeroSection.tsx       Premium hero composition and Framer Motion interactions
+  JsonLd.tsx            Schema.org JSON-LD renderer
+  SiteHeader.tsx        Fixed header and navigation
+  SiteFooter.tsx        Footer contact details
+  content-cards.tsx     Reusable cards used by homepage sections
+  ui.tsx                Section shell, icons, and small UI primitives
+lib/
+  site.ts          Shared site config, content arrays, SEO/schema data
+public/
+  videos/hero.mp4  Dental hero video background
+```
+
+## Architecture Notes
+
+- `app/page.tsx` is intentionally kept as a section composer. Reusable presentation patterns live in `components/content-cards.tsx`.
+- Shared content, clinic details, navigation, and structured data live in `lib/site.ts` to avoid duplicated phone numbers, addresses, and SEO data.
+- Interactive animation components are marked as Client Components only where needed. Static layout, metadata, footer, and JSON-LD stay server-rendered.
+- `AnimatedReveal` keeps content visible by default and only hides nodes after the browser confirms animation support, preventing permanent invisible content if IntersectionObserver fails.
+- The hero video uses `/public/videos/hero.mp4` with `autoplay`, `muted`, `loop`, `playsInline`, and `preload="auto"`.
+
+## SEO
+
+Implemented in `app/layout.tsx` and `components/JsonLd.tsx`:
+
+- Primary title and description for "Dentist in Fairfax, VA"
+- Canonical URL
+- Open Graph metadata
+- Twitter Cards
+- Indexable robots metadata
+- Schema.org `Dentist` and `LocalBusiness` JSON-LD
+
+## Accessibility
+
+- Semantic landmarks: `header`, `nav`, `main`, `section`, `footer`
+- Descriptive labels for navigation, hero imagery, and appointment form
+- Keyboard-friendly links, buttons, inputs, `details`/`summary` FAQ
+- Reduced-motion support through `prefers-reduced-motion`
+- High-contrast hero overlay for readable text on video
+
+## Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the local development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Production Checks
 
-## Learn More
+Run lint:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run production build:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+Start the production server after building:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Content Updates
+
+Most clinic content can be updated in `lib/site.ts`:
+
+- Navigation
+- Benefits/statistics
+- Dental services
+- Practice feature cards
+- Doctor credentials
+- Reviews
+- FAQ
+- Contact details
+- Schema.org data
+
+Hero copy and CTA labels live in `components/HeroSection.tsx` because they are tightly coupled to the hero layout.
+
+## Handoff Checklist
+
+- Confirm `/public/videos/hero.mp4` is the approved final clinic video.
+- Replace demo phone number, address, and email with real client details in `lib/site.ts`.
+- Replace stock imagery URLs with licensed final assets if required.
+- Run `npm run lint` and `npm run build` before deployment.
+- Re-check mobile, tablet, and desktop layouts after changing copy or media.
