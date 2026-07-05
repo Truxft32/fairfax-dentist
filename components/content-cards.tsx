@@ -1,6 +1,6 @@
 import { AnimatedReveal } from "./AnimatedReveal";
 import { ArrowIcon, IconBadge, ShieldIcon, SparkIcon, ToothIcon } from "./ui";
-import type { FeaturedTreatment, IconTone, Service } from "@/lib/site";
+import type { FeaturedTreatment, HeroHighlight, IconTone, Service } from "@/lib/site";
 
 type BenefitStatCardProps = {
   value: string;
@@ -12,10 +12,34 @@ export function BenefitStatCard({ value, label, delay = 0 }: BenefitStatCardProp
   return (
     <AnimatedReveal
       delay={delay}
-      className="rounded-[1.75rem] bg-white p-7 shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-950/10"
+      className="bg-white p-7 text-center ring-1 ring-slate-100 transition hover:bg-[#fbf8f1]"
     >
-      <p className="text-3xl font-semibold tracking-tight text-blue-900">{value}</p>
-      <p className="mt-2 text-sm font-medium text-slate-600">{label}</p>
+      <p className="text-3xl font-semibold tracking-tight text-[#2f6682]">{value}</p>
+      <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">{label}</p>
+    </AnimatedReveal>
+  );
+}
+
+type HeroHighlightCardProps = {
+  item: HeroHighlight;
+  index: number;
+};
+
+export function HeroHighlightCard({ item, index }: HeroHighlightCardProps) {
+  const tone: IconTone = index === 1 ? "gold" : "teal";
+
+  return (
+    <AnimatedReveal
+      delay={index * 90}
+      className="group relative bg-white px-7 py-8 text-center ring-1 ring-slate-200 transition hover:z-10 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-950/10"
+    >
+      <div className="mx-auto flex size-14 items-center justify-center rounded-sm bg-[#eef6f8] text-[#2f6682] ring-1 ring-[#c7dde3]">
+        <IconBadge tone={tone}>
+          <ToothIcon />
+        </IconBadge>
+      </div>
+      <h3 className="mt-5 text-lg font-semibold text-[#14364a]">{item.title}</h3>
+      <p className="mt-3 text-sm leading-7 text-slate-600">{item.copy}</p>
     </AnimatedReveal>
   );
 }
@@ -36,12 +60,12 @@ export function PracticeFeatureCard({
   return (
     <AnimatedReveal
       delay={delay}
-      className="rounded-[1.5rem] bg-slate-50 p-7 ring-1 ring-slate-100"
+      className="rounded-sm bg-white/75 p-7 ring-1 ring-[#dfd8cc]"
     >
       <IconBadge tone={tone}>
         <SparkIcon />
       </IconBadge>
-      <h3 className="mt-6 text-xl font-semibold text-slate-950">{title}</h3>
+      <h3 className="mt-6 text-xl font-semibold text-[#14364a]">{title}</h3>
       <p className="mt-3 leading-7 text-slate-600">{copy}</p>
     </AnimatedReveal>
   );
@@ -58,14 +82,14 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
   return (
     <AnimatedReveal
       delay={index * 70}
-      className="group rounded-[1.5rem] bg-white p-7 shadow-sm ring-1 ring-slate-100 transition duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-950/10"
+      className="group rounded-sm bg-white p-7 shadow-sm ring-1 ring-slate-100 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-950/10"
     >
       <IconBadge tone={tone}>
         <ToothIcon />
       </IconBadge>
-      <h3 className="mt-7 min-h-14 text-xl font-semibold text-slate-950">{service.title}</h3>
+      <h3 className="mt-7 min-h-14 text-xl font-semibold text-[#14364a]">{service.title}</h3>
       <p className="mt-3 leading-7 text-slate-600">{service.copy}</p>
-      <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-800 group-hover:text-teal-700">
+      <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#2f6682] group-hover:text-teal-700">
         Learn more <ArrowIcon />
       </span>
     </AnimatedReveal>
@@ -83,7 +107,7 @@ export function FeaturedTreatmentCard({ treatment, index }: FeaturedTreatmentCar
   return (
     <AnimatedReveal
       delay={index * 90}
-      className="group flex h-full flex-col rounded-[1.5rem] bg-white p-7 shadow-sm ring-1 ring-slate-100 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-950/10"
+      className="group flex h-full flex-col rounded-sm bg-white p-7 shadow-sm ring-1 ring-slate-100 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-950/10"
     >
       <IconBadge tone={tone}>
         <SparkIcon />
@@ -91,13 +115,13 @@ export function FeaturedTreatmentCard({ treatment, index }: FeaturedTreatmentCar
       <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-teal-700">
         {treatment.kicker}
       </p>
-      <h3 className="mt-3 text-2xl font-semibold tracking-tight text-slate-950">
+      <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#14364a]">
         {treatment.title}
       </h3>
       <p className="mt-4 flex-1 leading-7 text-slate-600">{treatment.copy}</p>
       <a
         href={treatment.href}
-        className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-blue-800 group-hover:text-teal-700"
+        className="mt-7 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#2f6682] group-hover:text-teal-700"
       >
         Request Consultation <ArrowIcon />
       </a>
@@ -114,7 +138,7 @@ export function CredentialCard({ item, delay = 0 }: CredentialCardProps) {
   return (
     <AnimatedReveal
       delay={delay}
-      className="rounded-3xl bg-blue-50 p-5 text-sm font-semibold text-blue-900"
+      className="rounded-sm bg-[#eef6f8] p-5 text-sm font-semibold text-[#2f6682]"
     >
       {item}
     </AnimatedReveal>
@@ -132,7 +156,7 @@ export function ReviewCard({ quote, name, detail, delay = 0 }: ReviewCardProps) 
   return (
     <AnimatedReveal
       delay={delay}
-      className="rounded-[1.5rem] bg-white/10 p-7 ring-1 ring-white/15"
+      className="rounded-sm bg-white/10 p-7 ring-1 ring-white/15"
     >
       <div className="mb-5 text-amber-300" aria-label="Five star review">
         {"\u2605\u2605\u2605\u2605\u2605"}
@@ -155,7 +179,7 @@ export function WhyChooseCard({ item, delay = 0 }: WhyChooseCardProps) {
   return (
     <AnimatedReveal
       delay={delay}
-      className="flex gap-4 rounded-[1.5rem] bg-slate-50 p-6 ring-1 ring-slate-100"
+      className="flex gap-4 rounded-sm bg-slate-50 p-6 ring-1 ring-slate-100"
     >
       <IconBadge tone="teal">
         <ShieldIcon />
@@ -174,7 +198,7 @@ export function FinancingCard({ item, delay = 0 }: FinancingCardProps) {
   return (
     <AnimatedReveal
       delay={delay}
-      className="rounded-[1.5rem] bg-white p-8 shadow-sm ring-1 ring-slate-100"
+      className="rounded-sm bg-white p-8 shadow-sm ring-1 ring-slate-100"
     >
       <h3 className="text-2xl font-semibold text-slate-950">{item}</h3>
       <p className="mt-4 leading-7 text-slate-600">
@@ -194,7 +218,7 @@ type FaqCardProps = {
 export function FaqCard({ question, answer, delay = 0 }: FaqCardProps) {
   return (
     <AnimatedReveal delay={delay}>
-      <details className="group rounded-[1.25rem] bg-slate-50 p-6 ring-1 ring-slate-100 open:bg-white open:shadow-xl open:shadow-blue-950/10">
+      <details className="group rounded-sm bg-slate-50 p-6 ring-1 ring-slate-100 open:bg-white open:shadow-xl open:shadow-blue-950/10">
         <summary className="cursor-pointer list-none text-lg font-semibold text-slate-950">
           {question}
         </summary>

@@ -7,18 +7,8 @@ type HeroSectionProps = {
   benefits: readonly Benefit[];
 };
 
-const cards = [
-  { value: "4.9\u2605", label: "Google Rating" },
-  { value: "2,800+", label: "Happy Patients" },
-  { value: "Same-Day", label: "Emergency Care" },
-  { value: "Board Certified", label: "Specialist Network" },
-] as const;
-
-const yearsOfExperience = { value: "10+", label: "Years of experience" } as const;
-
 export function HeroSection({ benefits }: HeroSectionProps) {
   const reviewScore = benefits[0]?.value ?? "4.9/5";
-  const patientCount = benefits[1]?.value ?? "2,800+";
 
   const motionDelay = (delay: number) =>
     ({
@@ -26,102 +16,67 @@ export function HeroSection({ benefits }: HeroSectionProps) {
     }) as CSSProperties;
 
   return (
-    <section className="relative isolate flex min-h-screen items-end overflow-hidden px-5 pb-12 pt-32 text-white sm:px-8 sm:pb-16 lg:px-12 lg:pb-20">
+    <section className="relative isolate flex min-h-[760px] items-center overflow-hidden px-5 pb-40 pt-32 text-white sm:px-8 sm:pt-40 lg:px-12">
       <HeroBackground />
-      <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(2,6,23,0.76)_0%,rgba(15,35,65,0.62)_44%,rgba(15,23,42,0.44)_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-slate-950/70 to-transparent" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,48,67,0.18)_0%,rgba(16,48,67,0.34)_45%,rgba(16,48,67,0.78)_100%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#efe8dc] to-transparent" />
+      <div
+        className="absolute inset-x-[-12%] bottom-[-7rem] h-44 bg-[#efe8dc]"
+        style={{ borderRadius: "50% 50% 0 0 / 100% 100% 0 0" }}
+      />
 
-      <div className="relative mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.62fr)] lg:items-end">
-        <div className="max-w-4xl">
+      <div className="relative mx-auto w-full max-w-6xl text-center">
+        <div className="mx-auto max-w-4xl">
           <p
             style={motionDelay(80)}
-            className="premium-hero-in mb-6 inline-flex max-w-full rounded-full border border-white/20 bg-white/12 px-4 py-2 text-left text-xs font-semibold uppercase leading-5 tracking-[0.18em] text-blue-50 shadow-sm backdrop-blur-md sm:tracking-[0.22em]"
+            className="premium-hero-in mb-6 inline-flex max-w-full border border-white/55 bg-white/12 px-6 py-2 text-center text-xs font-semibold uppercase leading-5 tracking-[0.28em] text-white shadow-sm"
           >
-            Advanced dental care in the heart of Fairfax
+            Comprehensive dental care in Fairfax
           </p>
 
           <h1
             style={motionDelay(220)}
-            className="premium-hero-in max-w-4xl text-balance text-[clamp(3.25rem,8vw,7.5rem)] font-semibold leading-[0.92] tracking-tight text-white"
+            className="premium-hero-in mx-auto max-w-4xl text-balance font-serif text-[clamp(3rem,6.2vw,6.4rem)] font-normal leading-[0.98] tracking-normal text-white drop-shadow-sm"
           >
             Trusted Dentist in Fairfax, VA
           </h1>
 
           <p
             style={motionDelay(380)}
-            className="premium-hero-in mt-7 max-w-2xl text-lg leading-8 text-blue-50/95 sm:text-xl"
+            className="premium-hero-in mx-auto mt-7 max-w-2xl text-base leading-8 text-blue-50/95 sm:text-lg"
           >
-            Experience precise, compassionate dentistry in a calm boutique practice built for
-            families, professionals, and smile transformations.
+            Comfortable family, cosmetic, emergency, implant, and Invisalign care in a calm
+            neighborhood dental office.
+          </p>
+          <p className="premium-hero-in mx-auto mt-3 max-w-xl text-sm font-semibold uppercase tracking-[0.18em] text-[#f6f1df]">
+            {reviewScore} patient rating | Same-day emergency visits when available
           </p>
 
           <div
             style={motionDelay(540)}
-            className="premium-hero-in mt-10 flex flex-col gap-4 sm:flex-row"
+            className="premium-hero-in mt-10 flex flex-col justify-center gap-3 sm:flex-row"
           >
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-amber-300 px-7 py-4 text-base font-semibold text-slate-950 shadow-xl shadow-slate-950/20 transition duration-300 ease-out hover:-translate-y-1 hover:bg-amber-200 hover:shadow-2xl"
+              className="inline-flex items-center justify-center gap-2 bg-[#f6f1df] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#14364a] shadow-xl shadow-slate-950/15 transition duration-300 ease-out hover:-translate-y-1 hover:bg-white hover:shadow-2xl"
             >
-              Schedule Appointment
+              Request an Appointment
               <ArrowIcon />
             </a>
             <a
               href={`tel:${siteConfig.phoneHref}`}
-              className="inline-flex items-center justify-center rounded-full border border-white/35 bg-white/10 px-7 py-4 text-base font-semibold text-white shadow-lg shadow-slate-950/10 backdrop-blur-md transition duration-300 ease-out hover:-translate-y-1 hover:bg-white/18"
+              className="inline-flex items-center justify-center border border-white/55 bg-transparent px-7 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-lg shadow-slate-950/10 transition duration-300 ease-out hover:-translate-y-1 hover:bg-white/12"
             >
               Call Now
             </a>
-            <a
-              href="#services"
-              className="inline-flex items-center justify-center rounded-full border border-white/25 px-7 py-4 text-base font-semibold text-white transition duration-300 ease-out hover:-translate-y-1 hover:bg-white/10"
-            >
-              Explore Services
-            </a>
-          </div>
-
-          <div
-            style={motionDelay(700)}
-            className="premium-hero-in mt-12 grid max-w-2xl grid-cols-3 gap-4 border-t border-white/18 pt-6"
-          >
-            {[
-              { value: reviewScore, label: "Reviews" },
-              { value: patientCount, label: "Patients served" },
-              yearsOfExperience,
-            ].map((stat) => (
-              <div key={stat.label} className="min-w-0">
-                <p className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                  {stat.value}
-                </p>
-                <p className="mt-1 break-words text-[10px] font-medium uppercase leading-4 tracking-[0.1em] text-blue-100/85 sm:text-xs sm:tracking-[0.16em]">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
+      </div>
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-          {cards.map((card, index) => (
-            <div
-              key={card.label}
-              style={motionDelay(420 + index * 170)}
-              className="premium-hero-in rounded-2xl border border-white/18 bg-white/92 p-4 shadow-2xl shadow-slate-950/18 backdrop-blur-md transition duration-300 ease-out hover:bg-white"
-            >
-              <div className="flex items-center justify-between gap-5">
-                <div>
-                  <p className="text-xl font-semibold tracking-tight text-blue-950">
-                    {card.value}
-                  </p>
-                  <p className="mt-1 text-sm font-medium text-slate-600">{card.label}</p>
-                </div>
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-blue-50 text-sm font-semibold text-blue-900 ring-1 ring-blue-100">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="absolute inset-x-5 bottom-8 z-10 mx-auto hidden max-w-6xl border-y border-white/35 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-blue-50 sm:flex sm:items-center sm:justify-between">
+        <span>Fairfax, VA</span>
+        <span>Family & Cosmetic Dentistry</span>
+        <span>{siteConfig.phone}</span>
       </div>
     </section>
   );

@@ -1,46 +1,36 @@
 import Image from "next/image";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
+import { ArrowIcon } from "@/components/ui";
 import {
-  BenefitStatCard,
-  CredentialCard,
-  FaqCard,
-  FeaturedTreatmentCard,
-  FinancingCard,
-  PracticeFeatureCard,
-  ReviewCard,
-  ServiceCard,
-  WhyChooseCard,
-} from "@/components/content-cards";
-import { ArrowIcon, SectionShell } from "@/components/ui";
-import {
-  benefits,
   clinicImages,
   doctorCredentials,
-  faqs,
   featuredTreatments,
-  financingOptions,
-  practiceFeatures,
   services,
   siteConfig,
   testimonials,
   whyChooseItems,
 } from "@/lib/site";
 
+const welcomeNotes = [
+  "Clear answers before treatment begins",
+  "Comfortable visits for busy families",
+  "Natural dentistry that still looks like you",
+] as const;
+
 export function TrustBar() {
   return (
-    <section
-      className="border-b border-slate-100 bg-slate-50 px-5 py-12 sm:px-8 lg:px-12"
-      aria-label="Practice highlights"
-    >
-      <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {benefits.map((item, index) => (
-          <BenefitStatCard
-            key={item.label}
-            value={item.value}
-            label={item.label}
-            delay={index * 80}
-          />
-        ))}
+    <section className="relative z-20 bg-[#efe8dc] px-5 sm:px-8 lg:px-12" aria-label="Practice highlights">
+      <div className="mx-auto -mt-16 max-w-6xl bg-white px-7 py-8 shadow-2xl shadow-slate-950/10 ring-1 ring-[#ded8cc]">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <p className="max-w-2xl font-serif text-3xl leading-tight text-[#14364a]">
+            Dentistry that feels personal before it feels clinical.
+          </p>
+          <div className="flex flex-col gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 sm:flex-row sm:items-center sm:gap-8">
+            <span>4.9/5 patient rating</span>
+            <span className="hidden h-px w-10 bg-[#b7cbc8] sm:block" />
+            <span>Same-day emergency visits</span>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -48,268 +38,328 @@ export function TrustBar() {
 
 export function AboutSection() {
   return (
-    <SectionShell
-      id="about"
-      eyebrow="About practice"
-      title="Boutique dentistry with clinical precision and spa-level calm."
-      intro="Fairfax Dental Atelier blends modern diagnostics, thoughtful treatment planning, and a hospitality-first experience. Every visit is designed to feel clear, comfortable, and personal."
-      className="bg-white"
-    >
-      <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div className="relative min-h-[420px] overflow-hidden rounded-[1.5rem] bg-slate-100">
-          <Image
-            src={clinicImages.operatory}
-            alt="Modern Fairfax dental operatory prepared for a patient visit"
-            fill
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            className="object-cover"
-            priority={false}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-950/35 to-transparent" />
-        </div>
-        <div className="grid gap-5 sm:grid-cols-2">
-          {practiceFeatures.map((feature, index) => (
-            <PracticeFeatureCard
-              key={feature.title}
-              title={feature.title}
-              copy={feature.copy}
-              tone={feature.tone}
-              delay={index * 90}
+    <section id="about" className="bg-[#efe8dc] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <div className="mx-auto max-w-7xl">
+        <AnimatedReveal className="mx-auto max-w-4xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#5f8c8b]">
+            Welcome to Fairfax Dental Atelier
+          </p>
+          <h2 className="mt-5 text-balance font-serif text-5xl font-normal leading-tight text-[#14364a] sm:text-6xl">
+            A calm dental home for people who want care to feel clear.
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+            We keep visits focused, comfortable, and honest. You will know what we see, what it
+            means, and which options fit your health, schedule, and budget.
+          </p>
+        </AnimatedReveal>
+
+        <div className="relative mt-16 grid gap-6 md:block md:min-h-[760px]">
+          <AnimatedReveal className="z-10 bg-white p-8 shadow-xl shadow-slate-950/8 ring-1 ring-[#ded8cc] md:absolute md:left-0 md:top-16 md:w-[24rem]">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#5f8c8b]">
+              What patients notice
+            </p>
+            <ul className="mt-7 space-y-5">
+              {welcomeNotes.map((note) => (
+                <li key={note} className="flex gap-4 text-base font-semibold leading-7 text-[#14364a]">
+                  <span className="mt-2 h-px w-8 bg-[#b7cbc8]" />
+                  {note}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              className="mt-8 inline-flex items-center gap-2 border-b border-[#2f6682] pb-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#2f6682]"
+            >
+              Book Your Visit <ArrowIcon />
+            </a>
+          </AnimatedReveal>
+
+          <AnimatedReveal delay={120} className="relative min-h-[440px] overflow-hidden bg-slate-100 shadow-2xl shadow-slate-950/12 md:absolute md:left-[18%] md:top-0 md:h-[640px] md:w-[58%]">
+            <Image
+              src={clinicImages.operatory}
+              alt="Bright dental treatment room prepared for a Fairfax patient"
+              fill
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              className="object-cover"
             />
-          ))}
+          </AnimatedReveal>
+
+          <AnimatedReveal delay={180} className="relative min-h-[320px] overflow-hidden bg-slate-100 shadow-xl shadow-slate-950/10 md:absolute md:bottom-0 md:right-0 md:h-[420px] md:w-[38%]">
+            <Image
+              src={clinicImages.consultation}
+              alt="Dentist reviewing treatment options with a patient"
+              fill
+              sizes="(min-width: 1024px) 26vw, 100vw"
+              className="object-cover"
+            />
+          </AnimatedReveal>
+
+          <div className="absolute bottom-16 left-[12%] z-20 hidden bg-[#14364a] px-8 py-7 text-white shadow-xl shadow-slate-950/15 md:block">
+            <p className="text-4xl font-semibold">2,800+</p>
+            <p className="mt-2 max-w-40 text-xs font-semibold uppercase tracking-[0.18em] text-blue-100">
+              Fairfax smiles cared for
+            </p>
+          </div>
         </div>
       </div>
-    </SectionShell>
+    </section>
   );
 }
 
 export function ServicesSection() {
+  const primaryServices = services.slice(0, 6);
+
   return (
-    <SectionShell
-      id="services"
-      eyebrow="Dental services"
-      title="Comprehensive care for healthy, confident smiles."
-      intro="From routine prevention to full smile rehabilitation, our Fairfax dental team coordinates the details so your care feels simple."
-      className="bg-slate-50"
-    >
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {services.map((service, index) => (
-          <ServiceCard key={service.title} service={service} index={index} />
-        ))}
+    <section id="services" className="bg-white py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="px-5 sm:px-8 lg:px-12">
+          <AnimatedReveal className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#5f8c8b]">
+              Dental services
+            </p>
+            <h2 className="mt-5 font-serif text-5xl font-normal leading-tight text-[#14364a] sm:text-6xl">
+              Complete care, organized around real dental needs.
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+              Prevention, cosmetic upgrades, urgent visits, and longer restorative plans all begin
+              with the same thing: a careful exam and a clear conversation.
+            </p>
+          </AnimatedReveal>
+        </div>
+
+        <AnimatedReveal delay={120} className="relative mt-16">
+          <div className="relative min-h-[620px] overflow-hidden bg-slate-100">
+            <Image
+              src={clinicImages.exterior}
+              alt="Welcoming dental office exterior"
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#14364a]/90 via-[#14364a]/22 to-transparent" />
+            <div className="absolute bottom-10 left-5 max-w-xl text-white sm:left-8 lg:left-20">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#dbe9d0]">
+                Featured care
+              </p>
+              <h3 className="mt-4 font-serif text-5xl leading-tight">
+                Dental implants, Invisalign, cosmetic dentistry.
+              </h3>
+            </div>
+          </div>
+          <div className="mx-5 -mt-10 grid bg-white shadow-2xl shadow-slate-950/14 ring-1 ring-[#ded8cc] sm:mx-8 md:grid-cols-3 lg:mx-20">
+            {primaryServices.slice(0, 3).map((service, index) => (
+              <a
+                key={service.title}
+                href="#contact"
+                className="border-b border-[#ded8cc] p-7 transition hover:bg-[#f8f5ef] md:border-b-0 md:border-r"
+              >
+                <span className="text-xs font-semibold text-[#5f8c8b]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 text-2xl font-semibold text-[#14364a]">{service.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{service.copy}</p>
+              </a>
+            ))}
+          </div>
+        </AnimatedReveal>
+
+        <div className="mx-auto mt-16 max-w-6xl px-5 sm:px-8 lg:px-12">
+          <div className="border-y border-[#ded8cc]">
+            {primaryServices.slice(3).map((service, index) => (
+              <AnimatedReveal key={service.title} delay={index * 50}>
+                <a
+                  href="#contact"
+                  className="grid gap-4 border-b border-[#ded8cc] py-6 transition hover:bg-[#f8f5ef] md:grid-cols-[5rem_1fr_1.5fr_auto]"
+                >
+                  <span className="text-sm font-semibold text-[#5f8c8b]">
+                    {String(index + 4).padStart(2, "0")}
+                  </span>
+                  <span className="text-2xl font-semibold text-[#14364a]">{service.title}</span>
+                  <span className="leading-7 text-slate-600">{service.copy}</span>
+                  <span className="self-center text-[#2f6682]">
+                    <ArrowIcon />
+                  </span>
+                </a>
+              </AnimatedReveal>
+            ))}
+          </div>
+        </div>
       </div>
-    </SectionShell>
+    </section>
   );
 }
 
 export function FeaturedTreatmentsSection() {
   return (
-    <SectionShell
-      id="implants"
-      eyebrow="Focused treatment"
-      title="Implants, cosmetic dentistry, emergency care, and Invisalign in Fairfax."
-      intro="These are the treatment categories patients most often compare when choosing a dentist in Fairfax, VA. Each begins with a clear exam, photography when helpful, and a written plan."
-      className="bg-white"
-    >
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        {featuredTreatments.map((treatment, index) => (
-          <FeaturedTreatmentCard key={treatment.title} treatment={treatment} index={index} />
-        ))}
+    <section id="implants" className="bg-[#edf6f4] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+          <AnimatedReveal className="relative min-h-[620px] overflow-hidden bg-slate-100">
+            <Image
+              src={clinicImages.family}
+              alt="Smiling family patient portrait"
+              fill
+              sizes="(min-width: 1024px) 52vw, 100vw"
+              className="object-cover"
+            />
+          </AnimatedReveal>
+          <AnimatedReveal delay={120} className="bg-white p-8 shadow-xl shadow-slate-950/8 ring-1 ring-[#c7dfda] lg:-ml-28 lg:mb-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#5f8c8b]">
+              Focused treatment
+            </p>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight text-[#14364a]">
+              Dentistry for the moments patients care about most.
+            </h2>
+            <div className="mt-8 space-y-6">
+              {featuredTreatments.map((item) => (
+                <div key={item.title} className="border-t border-[#ded8cc] pt-5">
+                  <h3 className="text-xl font-semibold text-[#14364a]">{item.title}</h3>
+                  <p className="mt-2 leading-7 text-slate-600">{item.copy}</p>
+                </div>
+              ))}
+            </div>
+          </AnimatedReveal>
+        </div>
       </div>
-    </SectionShell>
+    </section>
   );
 }
 
 export function DoctorSection() {
   return (
-    <SectionShell
-      id="doctor"
-      eyebrow="Meet the doctor"
-      title="Led by Dr. Elena Hart, DDS."
-      intro="Dr. Hart is known for calm communication, meticulous cosmetic work, and restorative dentistry that protects long-term function."
-      className="bg-slate-50"
-    >
-      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-        <div className="relative min-h-[520px] overflow-hidden rounded-[1.5rem] bg-slate-100">
-          <Image
-            src={clinicImages.doctor}
-            alt="Portrait of a Fairfax dentist in a clinical setting"
-            fill
-            sizes="(min-width: 1024px) 38vw, 100vw"
-            className="object-cover"
-          />
-        </div>
-        <div>
-          <p className="text-xl leading-9 text-slate-700">
-            Patients choose Dr. Hart for her blend of technical excellence and plain-spoken
-            guidance. She takes time to understand your concerns, explain findings with
-            photography, and create care plans that fit your health, schedule, and budget.
+    <section id="doctor" className="relative overflow-hidden bg-[#14364a] px-5 py-24 text-white sm:px-8 lg:px-12 lg:py-32">
+      <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
+        <Image
+          src={clinicImages.doctor}
+          alt="Portrait of Dr. Elena Hart, DDS"
+          fill
+          sizes="50vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#14364a] via-[#14364a]/35 to-transparent" />
+      </div>
+      <div className="relative mx-auto max-w-7xl">
+        <AnimatedReveal className="max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#dbe9d0]">
+            Meet the doctor
           </p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {doctorCredentials.map((item, index) => (
-              <CredentialCard key={item} item={item} delay={index * 90} />
+          <h2 className="mt-5 text-4xl font-semibold leading-tight sm:text-5xl">
+            Dr. Elena Hart brings calm, detailed dentistry to Fairfax.
+          </h2>
+          <p className="mt-7 text-lg leading-9 text-blue-50">
+            Patients choose Dr. Hart for plain-spoken guidance, careful cosmetic planning, and
+            restorative dentistry that protects long-term function.
+          </p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {doctorCredentials.map((item) => (
+              <div key={item} className="border border-white/20 p-5 text-sm font-semibold text-blue-50">
+                {item}
+              </div>
             ))}
           </div>
-        </div>
+        </AnimatedReveal>
       </div>
-    </SectionShell>
+    </section>
   );
 }
 
 export function ReviewsSection() {
+  const [mainReview, ...smallReviews] = testimonials;
+
   return (
-    <SectionShell
-      id="reviews"
-      eyebrow="Patient reviews"
-      title="Trusted by Fairfax patients who value comfort and clarity."
-      className="bg-blue-950 text-white"
-      theme="dark"
-    >
-      <div className="grid gap-6 lg:grid-cols-3">
-        {testimonials.map((review, index) => (
-          <ReviewCard
-            key={review.name}
-            quote={review.quote}
-            name={review.name}
-            detail={review.detail}
-            delay={index * 100}
-          />
-        ))}
+    <section id="reviews" className="bg-[#f4efe8] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        <AnimatedReveal>
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#5f8c8b]">
+            Patient stories
+          </p>
+          <h2 className="mt-5 text-4xl font-semibold leading-tight text-[#14364a] sm:text-5xl">
+            Trusted by Fairfax patients who value comfort and clarity.
+          </h2>
+        </AnimatedReveal>
+        <AnimatedReveal delay={120} className="bg-white p-8 shadow-xl shadow-slate-950/8 ring-1 ring-[#ded8cc]">
+          <p className="text-2xl leading-10 text-[#14364a]">&ldquo;{mainReview.quote}&rdquo;</p>
+          <p className="mt-7 font-semibold text-[#2f6682]">{mainReview.name}</p>
+          <p className="text-sm text-slate-500">{mainReview.detail}</p>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {smallReviews.map((review) => (
+              <div key={review.name} className="border-t border-[#ded8cc] pt-5">
+                <p className="leading-7 text-slate-600">&ldquo;{review.quote}&rdquo;</p>
+                <p className="mt-4 font-semibold text-[#14364a]">{review.name}</p>
+              </div>
+            ))}
+          </div>
+        </AnimatedReveal>
       </div>
-    </SectionShell>
+    </section>
   );
 }
 
 export function WhyChooseSection() {
   return (
-    <SectionShell
-      eyebrow="Why choose us"
-      title="A premium dental experience without the pressure."
-      intro="We focus on the details patients actually feel: respectful timing, clear costs, gentle techniques, and results that look like you."
-      className="bg-white"
-    >
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {whyChooseItems.map((item, index) => (
-          <WhyChooseCard key={item} item={item} delay={index * 70} />
-        ))}
+    <section className="bg-white px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <div className="mx-auto max-w-7xl">
+        <AnimatedReveal className="max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#5f8c8b]">
+            Why choose us
+          </p>
+          <h2 className="mt-5 text-4xl font-semibold leading-tight text-[#14364a] sm:text-5xl">
+            The details that make dental care easier to say yes to.
+          </h2>
+        </AnimatedReveal>
+        <div className="mt-14 grid gap-0 border-y border-[#ded8cc] lg:grid-cols-2">
+          {whyChooseItems.map((item, index) => (
+            <AnimatedReveal key={item} delay={index * 40}>
+              <div className="grid grid-cols-[4rem_1fr] border-b border-[#ded8cc] py-6 lg:odd:border-r">
+                <span className="text-sm font-semibold text-[#5f8c8b]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <p className="text-xl font-semibold leading-8 text-[#14364a]">{item}</p>
+              </div>
+            </AnimatedReveal>
+          ))}
+        </div>
       </div>
-    </SectionShell>
+    </section>
   );
 }
 
 export function FinancingSection() {
-  return (
-    <SectionShell
-      eyebrow="Insurance & financing"
-      title="Clear estimates and flexible ways to invest in your smile."
-      intro="Our team helps you understand benefits before treatment begins and offers financing options for larger restorative or cosmetic plans."
-      className="bg-slate-50"
-    >
-      <div className="grid gap-6 lg:grid-cols-3">
-        {financingOptions.map((item, index) => (
-          <FinancingCard key={item} item={item} delay={index * 90} />
-        ))}
-      </div>
-    </SectionShell>
-  );
+  return null;
 }
 
 export function FaqSection() {
-  return (
-    <SectionShell
-      eyebrow="FAQ"
-      title="Questions patients ask before their first visit."
-      className="bg-white"
-    >
-      <div className="grid gap-4 lg:grid-cols-2">
-        {faqs.map((item, index) => (
-          <FaqCard key={item.q} question={item.q} answer={item.a} delay={index * 80} />
-        ))}
-      </div>
-    </SectionShell>
-  );
+  return null;
 }
 
 export function AppointmentSection() {
   return (
-    <section
-      id="contact"
-      className="scroll-mt-24 bg-gradient-to-br from-blue-950 to-teal-900 px-5 py-20 sm:px-8 lg:px-12 lg:py-28"
-    >
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <AnimatedReveal className="text-white">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">
+    <section id="contact" className="bg-[#14364a] px-5 py-20 text-white sm:px-8 lg:px-12 lg:py-28">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+        <AnimatedReveal>
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#dbe9d0]">
             Request appointment
           </p>
-          <h2 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            Start with a calmer dental visit in Fairfax.
+          <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
+            Start with a dental visit that feels organized from the first call.
           </h2>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-blue-50">
-            Tell us what you need and our patient care team will follow up with availability,
-            insurance guidance, and next steps.
-          </p>
-          <address className="mt-8 rounded-[1.25rem] bg-white/10 p-6 not-italic ring-1 ring-white/15">
+          <address className="mt-8 not-italic text-blue-50">
             <p className="font-semibold">{siteConfig.name}</p>
-            <p className="mt-2">
-              <a href={`tel:${siteConfig.phoneHref}`} className="text-white underline-offset-4 hover:underline">
-                Call Now: {siteConfig.phone}
-              </a>
-            </p>
-            <p className="mt-2 text-blue-100">{siteConfig.fullAddress}</p>
+            <p className="mt-2">{siteConfig.fullAddress}</p>
+            <a href={`tel:${siteConfig.phoneHref}`} className="mt-2 inline-block underline-offset-4 hover:underline">
+              {siteConfig.phone}
+            </a>
           </address>
         </AnimatedReveal>
-        <AnimatedReveal delay={140}>
-          <form
-            className="rounded-[1.5rem] bg-white p-6 shadow-2xl shadow-slate-950/25 sm:p-8"
-            aria-label="Request an appointment"
-          >
-            <div className="grid gap-5 sm:grid-cols-2">
-              <label className="text-sm font-semibold text-slate-700">
-                First name
-                <input
-                  name="firstName"
-                  autoComplete="given-name"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-100"
-                />
-              </label>
-              <label className="text-sm font-semibold text-slate-700">
-                Last name
-                <input
-                  name="lastName"
-                  autoComplete="family-name"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-100"
-                />
-              </label>
-              <label className="text-sm font-semibold text-slate-700">
-                Phone
-                <input
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-100"
-                />
-              </label>
-              <label className="text-sm font-semibold text-slate-700">
-                Email
-                <input
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-100"
-                />
-              </label>
+        <AnimatedReveal delay={120}>
+          <form className="bg-white p-7 text-slate-950 shadow-2xl shadow-slate-950/20" aria-label="Request an appointment">
+            <div className="grid gap-4">
+              <input name="name" placeholder="Name" className="border border-slate-200 px-4 py-3 outline-none focus:border-[#5f8c8b]" />
+              <input name="phone" type="tel" placeholder="Phone" className="border border-slate-200 px-4 py-3 outline-none focus:border-[#5f8c8b]" />
+              <input name="email" type="email" placeholder="Email" className="border border-slate-200 px-4 py-3 outline-none focus:border-[#5f8c8b]" />
+              <textarea name="message" rows={4} placeholder="How can we help?" className="resize-none border border-slate-200 px-4 py-3 outline-none focus:border-[#5f8c8b]" />
             </div>
-            <label className="mt-5 block text-sm font-semibold text-slate-700">
-              How can we help?
-              <textarea
-                name="message"
-                rows={5}
-                className="mt-2 w-full resize-none rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-100"
-              />
-            </label>
-            <button
-              type="submit"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-900 px-7 py-4 font-semibold text-white shadow-lg shadow-blue-900/20 transition hover:-translate-y-0.5 hover:bg-blue-800 sm:w-auto"
-            >
+            <button type="submit" className="mt-5 inline-flex w-full items-center justify-center gap-2 bg-[#2f6682] px-6 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-white">
               Schedule Appointment <ArrowIcon />
             </button>
           </form>

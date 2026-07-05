@@ -24,10 +24,25 @@ export const navItems = [
 ] as const;
 
 export const benefits = [
-  { value: "4.9/5", label: "Average patient rating" },
-  { value: "2,800+", label: "Fairfax smiles cared for" },
-  { value: "Same day", label: "Emergency appointments" },
+  { value: "4.9/5", label: "Patient rating" },
+  { value: "2,800+", label: "Smiles cared for" },
+  { value: "Same-day", label: "Emergency visits" },
   { value: "25+", label: "Accepted insurance plans" },
+] as const;
+
+export const heroHighlights = [
+  {
+    title: "Patient-First Care",
+    copy: "Gentle visits, clear explanations, and treatment plans that respect your goals.",
+  },
+  {
+    title: "Advanced Technology",
+    copy: "Digital imaging, intraoral photography, and modern restorative materials.",
+  },
+  {
+    title: "Locally Owned Practice",
+    copy: "Convenient care for Fairfax families, professionals, and nearby communities.",
+  },
 ] as const;
 
 export const clinicImages = {
@@ -37,6 +52,10 @@ export const clinicImages = {
     "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=85",
   consultation:
     "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1400&q=85",
+  family:
+    "https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=1600&q=82",
+  exterior:
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=82",
 } as const;
 
 export const services = [
@@ -276,6 +295,7 @@ export const websiteJsonLd = {
 } as const;
 
 export type Benefit = (typeof benefits)[number];
+export type HeroHighlight = (typeof heroHighlights)[number];
 export type Service = (typeof services)[number];
 export type FeaturedTreatment = (typeof featuredTreatments)[number];
 export type IconTone = "blue" | "teal" | "gold";

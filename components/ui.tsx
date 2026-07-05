@@ -23,14 +23,14 @@ export function SectionShell({
   const isDark = theme === "dark";
 
   return (
-    <section id={id} className={`scroll-mt-24 px-5 py-20 sm:px-8 lg:px-12 lg:py-28 ${className}`}>
+    <section id={id} className={`scroll-mt-28 px-5 py-18 sm:px-8 lg:px-12 lg:py-24 ${className}`}>
       <div className="mx-auto max-w-7xl">
         <AnimatedReveal className="mb-12 max-w-3xl">
           <div>
             {eyebrow ? (
               <p
-                className={`mb-4 text-sm font-semibold uppercase tracking-[0.22em] ${
-                  isDark ? "text-amber-200" : "text-teal-700"
+                className={`mb-4 text-xs font-semibold uppercase tracking-[0.28em] ${
+                  isDark ? "text-[#dbe9d0]" : "text-[#5f8c8b]"
                 }`}
               >
                 {eyebrow}
@@ -63,14 +63,14 @@ type IconBadgeProps = {
 
 export function IconBadge({ children, tone = "blue" }: IconBadgeProps) {
   const tones = {
-    blue: "bg-blue-50 text-blue-700 ring-blue-100",
-    teal: "bg-teal-50 text-teal-700 ring-teal-100",
-    gold: "bg-amber-50 text-amber-700 ring-amber-100",
+    blue: "bg-[#eef6f8] text-[#2f6682] ring-[#c7dde3]",
+    teal: "bg-[#edf6f4] text-[#5f8c8b] ring-[#c7dfda]",
+    gold: "bg-[#fbf6df] text-[#a97721] ring-[#eadb9d]",
   };
 
   return (
     <div
-      className={`flex size-12 items-center justify-center rounded-2xl ring-1 ${tones[tone]}`}
+      className={`flex size-12 items-center justify-center rounded-sm ring-1 ${tones[tone]}`}
       aria-hidden="true"
     >
       {children}

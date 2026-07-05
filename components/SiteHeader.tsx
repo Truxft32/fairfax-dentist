@@ -8,17 +8,32 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/20 bg-white/90 px-5 py-4 shadow-sm shadow-slate-950/5 backdrop-blur-xl sm:px-8 lg:px-12">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4" aria-label="Primary">
+    <header className="fixed inset-x-0 top-0 z-50 bg-white/95 shadow-sm shadow-slate-950/5 backdrop-blur-xl">
+      <div className="hidden bg-[#587d99] px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white sm:block sm:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-7xl items-center justify-between">
+          <span>Fairfax, VA</span>
+          <a href="#contact" className="hover:text-blue-50">
+            Request an appointment
+          </a>
+          <a href={`tel:${siteConfig.phoneHref}`} className="hover:text-blue-50">
+            {siteConfig.phone}
+          </a>
+        </div>
+      </div>
+
+      <nav
+        className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-12"
+        aria-label="Primary"
+      >
         <a href="#" className="flex min-w-0 items-center gap-3" aria-label={`${siteConfig.name} home`}>
-          <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-blue-900 text-lg font-semibold text-white shadow-lg shadow-blue-900/20">
+          <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[#2f6682] text-lg font-semibold text-white shadow-lg shadow-blue-900/15">
             FD
           </span>
           <span className="min-w-0 leading-tight">
-            <span className="block truncate text-base font-semibold tracking-tight text-slate-950">
+            <span className="block truncate text-base font-semibold tracking-tight text-[#14364a]">
               {siteConfig.name}
             </span>
-            <span className="hidden text-xs font-medium uppercase tracking-[0.18em] text-blue-700 sm:block">
+            <span className="hidden text-xs font-medium uppercase tracking-[0.18em] text-[#5f8c8b] sm:block">
               Family & Cosmetic Dentistry
             </span>
           </span>
@@ -29,7 +44,7 @@ export function SiteHeader() {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-slate-700 transition hover:text-blue-800"
+              className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#2f6682]"
             >
               {item.label}
             </a>
@@ -39,13 +54,13 @@ export function SiteHeader() {
         <div className="hidden items-center gap-3 sm:flex">
           <a
             href={`tel:${siteConfig.phoneHref}`}
-            className="rounded-full border border-slate-200 px-4 py-3 text-sm font-semibold text-blue-900 transition hover:border-blue-200 hover:bg-blue-50"
+            className="rounded-sm border border-[#b7cbc8] px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#2f6682] transition hover:bg-[#edf6f4]"
           >
             Call Now
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-blue-900 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-900/20 transition hover:-translate-y-0.5 hover:bg-blue-800"
+            className="inline-flex items-center gap-2 rounded-sm bg-[#2f6682] px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-lg shadow-blue-900/15 transition hover:-translate-y-0.5 hover:bg-[#244f66]"
           >
             <CalendarIcon />
             Schedule Appointment
@@ -54,7 +69,7 @@ export function SiteHeader() {
 
         <button
           type="button"
-          className="inline-flex size-11 items-center justify-center rounded-full border border-slate-200 text-slate-900 lg:hidden"
+          className="inline-flex size-11 items-center justify-center rounded-full border border-slate-200 text-[#14364a] lg:hidden"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label="Toggle navigation menu"
@@ -82,7 +97,7 @@ export function SiteHeader() {
 
       <div
         id="mobile-menu"
-        className={`mx-auto max-w-7xl overflow-hidden transition-[max-height,opacity] duration-300 lg:hidden ${
+        className={`mx-auto max-w-7xl overflow-hidden px-5 transition-[max-height,opacity] duration-300 sm:px-8 lg:hidden ${
           isOpen ? "max-h-[calc(100vh-5rem)] overflow-y-auto opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -91,7 +106,7 @@ export function SiteHeader() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+              className="rounded-sm px-4 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-slate-700 hover:bg-slate-50"
               onClick={() => setIsOpen(false)}
             >
               {item.label}
@@ -100,13 +115,13 @@ export function SiteHeader() {
           <div className="grid gap-3 py-3 sm:hidden">
             <a
               href={`tel:${siteConfig.phoneHref}`}
-              className="rounded-full border border-slate-200 px-5 py-3 text-center text-sm font-semibold text-blue-900"
+              className="rounded-sm border border-slate-200 px-5 py-3 text-center text-sm font-semibold text-[#2f6682]"
             >
               Call Now
             </a>
             <a
               href="#contact"
-              className="rounded-full bg-blue-900 px-5 py-3 text-center text-sm font-semibold text-white"
+              className="rounded-sm bg-[#2f6682] px-5 py-3 text-center text-sm font-semibold text-white"
               onClick={() => setIsOpen(false)}
             >
               Schedule Appointment
