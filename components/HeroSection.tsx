@@ -16,7 +16,7 @@ export function HeroSection({ benefits }: HeroSectionProps) {
     }) as CSSProperties;
 
   return (
-    <section className="relative isolate flex min-h-[760px] items-center overflow-hidden px-5 pb-40 pt-32 text-white sm:px-8 sm:pt-40 lg:px-12">
+    <section className="relative isolate flex min-h-[680px] items-center overflow-hidden px-5 pb-28 pt-28 text-white sm:min-h-[720px] sm:px-8 sm:pb-36 sm:pt-36 lg:min-h-[760px] lg:px-12 lg:pb-40 lg:pt-40">
       <HeroBackground />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,48,67,0.18)_0%,rgba(16,48,67,0.34)_45%,rgba(16,48,67,0.78)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#efe8dc] to-transparent" />
@@ -29,43 +29,43 @@ export function HeroSection({ benefits }: HeroSectionProps) {
         <div className="mx-auto max-w-4xl">
           <p
             style={motionDelay(80)}
-            className="premium-hero-in mb-6 inline-flex max-w-full border border-white/55 bg-white/12 px-6 py-2 text-center text-xs font-semibold uppercase leading-5 tracking-[0.28em] text-white shadow-sm"
+            className="premium-hero-in mb-6 inline-flex max-w-full border border-white/55 bg-white/12 px-4 py-2 text-center text-[10px] font-semibold uppercase leading-5 tracking-[0.2em] text-white shadow-sm sm:px-6 sm:text-xs sm:tracking-[0.28em]"
           >
             Comprehensive dental care in Fairfax
           </p>
 
           <h1
             style={motionDelay(220)}
-            className="premium-hero-in mx-auto max-w-4xl text-balance font-serif text-[clamp(3rem,6.2vw,6.4rem)] font-normal leading-[0.98] tracking-normal text-white drop-shadow-sm"
+            className="premium-hero-in mx-auto max-w-4xl text-balance font-serif text-[clamp(2.65rem,8vw,6.4rem)] font-normal leading-[0.98] tracking-normal text-white drop-shadow-sm sm:text-[clamp(3rem,6.2vw,6.4rem)]"
           >
             Trusted Dentist in Fairfax, VA
           </h1>
 
           <p
             style={motionDelay(380)}
-            className="premium-hero-in mx-auto mt-7 max-w-2xl text-base leading-8 text-blue-50/95 sm:text-lg"
+            className="premium-hero-in mx-auto mt-6 max-w-2xl text-base leading-8 text-blue-50/95 sm:mt-7 sm:text-lg"
           >
             Comfortable family, cosmetic, emergency, implant, and Invisalign care in a calm
             neighborhood dental office.
           </p>
-          <p className="premium-hero-in mx-auto mt-3 max-w-xl text-sm font-semibold uppercase tracking-[0.18em] text-[#f6f1df]">
+          <p className="premium-hero-in mx-auto mt-3 max-w-xl text-xs font-semibold uppercase leading-6 tracking-[0.16em] text-[#f6f1df] sm:text-sm sm:tracking-[0.18em]">
             {reviewScore} patient rating | Same-day emergency visits when available
           </p>
 
           <div
             style={motionDelay(540)}
-            className="premium-hero-in mt-10 flex flex-col justify-center gap-3 sm:flex-row"
+            className="premium-hero-in mt-8 flex flex-col justify-center gap-3 sm:mt-10 sm:flex-row"
           >
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 bg-[#f6f1df] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#14364a] shadow-xl shadow-slate-950/15 transition duration-300 ease-out hover:-translate-y-1 hover:bg-white hover:shadow-2xl"
+              className="inline-flex min-h-11 items-center justify-center gap-2 bg-[#f6f1df] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] text-[#14364a] shadow-xl shadow-slate-950/15 transition duration-300 ease-out hover:-translate-y-1 hover:bg-white hover:shadow-2xl sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.14em]"
             >
               Request an Appointment
               <ArrowIcon />
             </a>
             <a
               href={`tel:${siteConfig.phoneHref}`}
-              className="inline-flex items-center justify-center border border-white/55 bg-transparent px-7 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-lg shadow-slate-950/10 transition duration-300 ease-out hover:-translate-y-1 hover:bg-white/12"
+              className="inline-flex min-h-11 items-center justify-center border border-white/55 bg-transparent px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-lg shadow-slate-950/10 transition duration-300 ease-out hover:-translate-y-1 hover:bg-white/12 sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.14em]"
             >
               Call Now
             </a>

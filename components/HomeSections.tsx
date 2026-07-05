@@ -128,7 +128,7 @@ export function ServicesSection() {
         </div>
 
         <AnimatedReveal delay={120} className="relative mt-16">
-          <div className="relative min-h-[620px] overflow-hidden bg-slate-100">
+          <div className="relative min-h-[460px] overflow-hidden bg-slate-100 sm:min-h-[560px] lg:min-h-[620px]">
             <Image
               src={clinicImages.exterior}
               alt="Welcoming dental office exterior"
@@ -146,12 +146,12 @@ export function ServicesSection() {
               </h3>
             </div>
           </div>
-          <div className="mx-5 -mt-10 grid bg-white shadow-2xl shadow-slate-950/14 ring-1 ring-[#ded8cc] sm:mx-8 md:grid-cols-3 lg:mx-20">
+          <div className="mx-5 -mt-10 grid bg-white shadow-2xl shadow-slate-950/14 ring-1 ring-[#ded8cc] sm:mx-8 md:grid-cols-2 lg:mx-20 xl:grid-cols-3">
             {primaryServices.slice(0, 3).map((service, index) => (
               <a
                 key={service.title}
                 href="#contact"
-                className="border-b border-[#ded8cc] p-7 transition hover:bg-[#f8f5ef] md:border-b-0 md:border-r"
+                className="border-b border-[#ded8cc] p-7 transition hover:bg-[#f8f5ef] xl:border-b-0 xl:border-r"
               >
                 <span className="text-xs font-semibold text-[#5f8c8b]">
                   {String(index + 1).padStart(2, "0")}
@@ -194,11 +194,12 @@ export function FeaturedTreatmentsSection() {
     <section id="implants" className="bg-[#edf6f4] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <AnimatedReveal className="relative min-h-[620px] overflow-hidden bg-slate-100">
+          <AnimatedReveal className="relative min-h-[360px] overflow-hidden bg-slate-100 sm:min-h-[460px] lg:min-h-[620px]">
             <Image
               src={clinicImages.family}
               alt="Smiling family patient portrait"
               fill
+              loading="eager"
               sizes="(min-width: 1024px) 52vw, 100vw"
               className="object-cover"
             />
@@ -239,6 +240,16 @@ export function DoctorSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#14364a] via-[#14364a]/35 to-transparent" />
       </div>
       <div className="relative mx-auto max-w-7xl">
+        <AnimatedReveal className="relative mb-10 min-h-[360px] overflow-hidden bg-slate-100 lg:hidden">
+          <Image
+            src={clinicImages.doctor}
+            alt="Portrait of Dr. Elena Hart, DDS"
+            fill
+            loading="eager"
+            sizes="100vw"
+            className="object-cover"
+          />
+        </AnimatedReveal>
         <AnimatedReveal className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#dbe9d0]">
             Meet the doctor

@@ -39,7 +39,7 @@ export function SiteHeader() {
           </span>
         </a>
 
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-8 xl:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -53,14 +53,14 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-3 sm:flex">
           <a
-            href={`tel:${siteConfig.phoneHref}`}
-            className="rounded-sm border border-[#b7cbc8] px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#2f6682] transition hover:bg-[#edf6f4]"
+          href={`tel:${siteConfig.phoneHref}`}
+            className="inline-flex min-h-11 items-center rounded-sm border border-[#b7cbc8] px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#2f6682] transition hover:bg-[#edf6f4]"
           >
             Call Now
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-sm bg-[#2f6682] px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-lg shadow-blue-900/15 transition hover:-translate-y-0.5 hover:bg-[#244f66]"
+            className="inline-flex min-h-11 items-center gap-2 rounded-sm bg-[#2f6682] px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-lg shadow-blue-900/15 transition hover:-translate-y-0.5 hover:bg-[#244f66]"
           >
             <CalendarIcon />
             Schedule Appointment
@@ -69,7 +69,7 @@ export function SiteHeader() {
 
         <button
           type="button"
-          className="inline-flex size-11 items-center justify-center rounded-full border border-slate-200 text-[#14364a] lg:hidden"
+          className="inline-flex size-11 items-center justify-center rounded-full border border-slate-200 text-[#14364a] xl:hidden"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label="Toggle navigation menu"
@@ -97,7 +97,7 @@ export function SiteHeader() {
 
       <div
         id="mobile-menu"
-        className={`mx-auto max-w-7xl overflow-hidden px-5 transition-[max-height,opacity] duration-300 sm:px-8 lg:hidden ${
+        className={`mx-auto max-w-7xl overflow-hidden px-5 transition-[max-height,opacity] duration-300 sm:px-8 xl:hidden ${
           isOpen ? "max-h-[calc(100vh-5rem)] overflow-y-auto opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -112,7 +112,7 @@ export function SiteHeader() {
               {item.label}
             </a>
           ))}
-          <div className="grid gap-3 py-3 sm:hidden">
+          <div className="grid gap-3 py-3 sm:grid-cols-2">
             <a
               href={`tel:${siteConfig.phoneHref}`}
               className="rounded-sm border border-slate-200 px-5 py-3 text-center text-sm font-semibold text-[#2f6682]"
