@@ -21,18 +21,22 @@ export function SiteFooter() {
         </div>
         <div>
           <p className="font-semibold">Visit</p>
-          <p className="mt-4 text-sm leading-7 text-slate-300">
+          <address className="mt-4 text-sm leading-7 text-slate-300 not-italic">
             {siteConfig.addressLine1}
             <br />
             {siteConfig.cityStateZip}
-          </p>
+          </address>
         </div>
         <div>
           <p className="font-semibold">Contact</p>
           <p className="mt-4 text-sm leading-7 text-slate-300">
-            {siteConfig.phone}
+            <a href={`tel:${siteConfig.phoneHref}`} className="hover:text-white">
+              {siteConfig.phone}
+            </a>
             <br />
-            {siteConfig.email}
+            <a href={`mailto:${siteConfig.email}`} className="hover:text-white">
+              {siteConfig.email}
+            </a>
           </p>
         </div>
         <div>

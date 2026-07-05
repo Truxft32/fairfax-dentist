@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { AnimatedReveal } from "./AnimatedReveal";
 
 type SectionProps = {
+  id?: string;
   eyebrow?: string;
   title: string;
   intro?: string;
@@ -11,6 +12,7 @@ type SectionProps = {
 };
 
 export function SectionShell({
+  id,
   eyebrow,
   title,
   intro,
@@ -21,7 +23,7 @@ export function SectionShell({
   const isDark = theme === "dark";
 
   return (
-    <section className={`px-5 py-20 sm:px-8 lg:px-12 lg:py-28 ${className}`}>
+    <section id={id} className={`scroll-mt-24 px-5 py-20 sm:px-8 lg:px-12 lg:py-28 ${className}`}>
       <div className="mx-auto max-w-7xl">
         <AnimatedReveal className="mb-12 max-w-3xl">
           <div>

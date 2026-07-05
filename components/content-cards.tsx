@@ -1,6 +1,6 @@
 import { AnimatedReveal } from "./AnimatedReveal";
 import { ArrowIcon, IconBadge, ShieldIcon, SparkIcon, ToothIcon } from "./ui";
-import type { IconTone } from "@/lib/site";
+import type { FeaturedTreatment, IconTone, Service } from "@/lib/site";
 
 type BenefitStatCardProps = {
   value: string;
@@ -48,7 +48,7 @@ export function PracticeFeatureCard({
 }
 
 type ServiceCardProps = {
-  service: string;
+  service: Service;
   index: number;
 };
 
@@ -63,13 +63,44 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       <IconBadge tone={tone}>
         <ToothIcon />
       </IconBadge>
-      <h3 className="mt-7 min-h-14 text-xl font-semibold text-slate-950">{service}</h3>
-      <p className="mt-3 leading-7 text-slate-600">
-        Personalized planning, modern materials, and gentle care tailored to your smile goals.
-      </p>
+      <h3 className="mt-7 min-h-14 text-xl font-semibold text-slate-950">{service.title}</h3>
+      <p className="mt-3 leading-7 text-slate-600">{service.copy}</p>
       <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-800 group-hover:text-teal-700">
         Learn more <ArrowIcon />
       </span>
+    </AnimatedReveal>
+  );
+}
+
+type FeaturedTreatmentCardProps = {
+  treatment: FeaturedTreatment;
+  index: number;
+};
+
+export function FeaturedTreatmentCard({ treatment, index }: FeaturedTreatmentCardProps) {
+  const tone: IconTone = index % 2 === 0 ? "blue" : "teal";
+
+  return (
+    <AnimatedReveal
+      delay={index * 90}
+      className="group flex h-full flex-col rounded-[1.5rem] bg-white p-7 shadow-sm ring-1 ring-slate-100 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-950/10"
+    >
+      <IconBadge tone={tone}>
+        <SparkIcon />
+      </IconBadge>
+      <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-teal-700">
+        {treatment.kicker}
+      </p>
+      <h3 className="mt-3 text-2xl font-semibold tracking-tight text-slate-950">
+        {treatment.title}
+      </h3>
+      <p className="mt-4 flex-1 leading-7 text-slate-600">{treatment.copy}</p>
+      <a
+        href={treatment.href}
+        className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-blue-800 group-hover:text-teal-700"
+      >
+        Request Consultation <ArrowIcon />
+      </a>
     </AnimatedReveal>
   );
 }

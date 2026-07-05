@@ -66,9 +66,8 @@ textarea {
 }
 
 .reveal-motion.can-animate:not(.is-visible) {
-  opacity: 0;
-  transform: translate3d(0, var(--reveal-y, 32px), 0);
-  will-change: opacity, transform;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .reveal-motion.is-visible {
@@ -120,5 +119,9 @@ textarea {
   .reveal-motion {
     opacity: 1;
     transform: none;
+  }
+
+  .hero-video {
+    display: none;
   }
 }

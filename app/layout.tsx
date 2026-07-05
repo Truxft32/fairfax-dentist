@@ -10,25 +10,27 @@ export const metadata: Metadata = {
   publisher: siteConfig.name,
   category: "Dental services",
   title: {
-    default: `Trusted Dentist in Fairfax, VA | ${siteConfig.name}`,
+    default: `Dentist in Fairfax, VA | ${siteConfig.name}`,
     template: `%s | ${siteConfig.name}`,
   },
   description:
-    "Premium family, cosmetic, emergency, and restorative dentistry in Fairfax, VA. Request an appointment with Fairfax Dental Atelier.",
+    "Dentist in Fairfax, VA offering family, cosmetic, emergency, implant, Invisalign, and restorative dental care. Schedule an appointment with Fairfax Dental Atelier.",
   keywords: [
     "Dentist in Fairfax, VA",
     "Fairfax dentist",
     "cosmetic dentist Fairfax",
     "emergency dentist Fairfax VA",
     "family dentist Fairfax",
+    "dental implants Fairfax VA",
+    "Invisalign Fairfax VA",
   ],
   alternates: {
     canonical: siteConfig.url,
   },
   openGraph: {
-    title: `Trusted Dentist in Fairfax, VA | ${siteConfig.name}`,
+    title: `Dentist in Fairfax, VA | ${siteConfig.name}`,
     description:
-      "Modern family and cosmetic dentistry in Fairfax, Virginia with comfort-focused care and premium results.",
+      "Modern family, cosmetic, implant, Invisalign, and emergency dentistry in Fairfax, Virginia.",
     url: siteConfig.url,
     siteName: siteConfig.name,
     images: [
@@ -44,7 +46,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trusted Dentist in Fairfax, VA",
+    title: "Dentist in Fairfax, VA",
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
